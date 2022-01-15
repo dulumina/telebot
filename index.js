@@ -14,21 +14,22 @@ bot.on('text', async (ctx) => {
     console.log("he says :"+modul);
     ctx.replyWithHTML('hy...!');
     return;
-  }
-  console.log("modul: " + modul_path)
-  try {
-    let app = require(modul_path);
-    let msg = await app(ctx.message)
-    console.log(msg);
-    ctx.replyWithHTML(
-      msg
-    )
-    // ctx.replyWithHTML("okee");
-  } catch(e) {
-    console.log(e);
-    ctx.replyWithHTML(
-      'undur-undur tidak mengenali perintah ini.',
-      {'reply_to_message_id':ctx.message.message_id})
+  }else{
+    console.log("modul: " + modul_path)
+    try {
+      let app = require(modul_path);
+      let msg = await app(ctx.message)
+      console.log(msg);
+      ctx.replyWithHTML(
+        msg
+      )
+      // ctx.replyWithHTML("okee");
+    } catch(e) {
+      console.log(e);
+      ctx.replyWithHTML(
+        'undur-undur tidak mengenali perintah ini.',
+        {'reply_to_message_id':ctx.message.message_id})
+    }
   }
 })
 
